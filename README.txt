@@ -1,42 +1,30 @@
-BCR BOT - RUN COMMANDS :
+=====================================
+BCR BOT - RUN COMMANDS
+=====================================
 
-===============================
-Terminal 1 - Gazebo
-===============================
+Terminal 1: Gazebo Simulation
+-----------------------------
 cd ~/bcr_bot_ws
-source /opt/ros/humble/setup.bash
 colcon build --packages-select bcr_bot
 source install/setup.bash
-ros2 launch bcr_bot gazebo.launch.py
+ros2 launch bcr_bot gz.launch.py
 
+Terminal 2: Rviz Visualization
+------------------------------
+source install/setup.bash
+ros2 launch bcr_bot visualize.launch.py
 
-=====================================
-Terminal 2 - Control (Keyboard)
-=====================================
-cd ~/bcr_bot_ws
+Terminal 3: Keyboard Control
+----------------------------
 source install/setup.bash
 ros2 run teleop_twist_keyboard teleop_twist_keyboard
 
-
-=====================================
-Terminal 3 - RVIZ 
-=====================================
-cd ~/bcr_bot_ws
+Terminal 4: SLAM (Mapping)
+--------------------------
 source install/setup.bash
-ros2 launch bcr_bot rviz.launch.py
+ros2 launch bcr_bot slam.launch.py
 
-
-=====================================
-Terminal 4 - Mapping (SLAM)
-=====================================
-cd ~/bcr_bot_ws
+Terminal 5: Navigation (Nav2)
+-----------------------------
 source install/setup.bash
-ros2 launch bcr_bot mapping.launch.py
-
-
-=====================================
-Terminal 5 - Navigation (Nav2)
-=====================================
-cd ~/bcr_bot_ws
-source install/setup.bash
-ros2 launch bcr_bot nav2.launch.py
+ros2 launch bcr_bot navigation.launch.py
